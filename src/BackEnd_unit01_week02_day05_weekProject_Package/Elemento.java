@@ -3,10 +3,10 @@ package BackEnd_unit01_week02_day05_weekProject_Package;
 public abstract class Elemento {
 
 	// - - - - - - - - - - - - - - - - - - - - attributes
-	private String isbn;
-	private String titolo;
-	private int annoPubblicazione;
-	private int numeroPagine;
+	protected String isbn;
+	protected String titolo;
+	protected int annoPubblicazione;
+	protected int numeroPagine;
 
 	// - - - - - - - - - - - - - - - - - - - - constructor
 	public Elemento(String _isbn, String _titolo, int _annoPubblicazione, int _numeroPagine) {

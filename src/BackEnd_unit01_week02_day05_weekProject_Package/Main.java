@@ -144,7 +144,6 @@ public class Main {
 	/*
 	 * public static Elemento leggiArchivioDaFile() { // - - - - - - - - - - - - - -
 	 * - - - - - - File "info2.txt" definition File file2 = new File("info2.txt");
-	 * String readFileToString = FileUtils.readFileToString(file2, "UTF-8");
-	 * String[] split = }
+	 * String readFileToString = FileUtils.readFileToString(file2, "UTF-8"); }
 	 */
 }

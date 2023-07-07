@@ -6,7 +6,7 @@ public class Libro extends Elemento {
 	protected String autore;
 	protected String genere;
 
-	// - - - - - - - - - - - - - - - - - - - - constructor
+	// - - - - - - - - - - - - - - - - - - - - constructors
 	public Libro(String _isbn, String _titolo, int _annoPubblicazione, int _numeroPagine) {
 		super(_isbn, _titolo, _annoPubblicazione, _numeroPagine);
 		// TODO Auto-generated constructor stub

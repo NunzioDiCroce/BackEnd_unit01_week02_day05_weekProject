@@ -37,4 +37,10 @@ public class Rivista extends Elemento {
 		return periodicita;
 	}
 
+	@Override
+	public String toString() {
+		return "[ISBN " + isbn + " " + "\"" + titolo + "\"" + ", " + anno + ", " + pagine + " pagine" + ", "
+				+ periodicita + "]";
+	}
+
 }

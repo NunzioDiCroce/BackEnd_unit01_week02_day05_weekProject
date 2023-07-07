@@ -42,4 +42,10 @@ public class Libro extends Elemento {
 	public String getGenere() {
 		return genere;
 	}
+
+	@Override
+	public String toString() {
+		return "[ISBN " + isbn + " " + "\"" + titolo + "\"" + ", " + anno + ", " + pagine + " pagine" + ", autore "
+				+ autore + ", genere " + genere + "]";
+	}
 }

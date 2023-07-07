@@ -33,4 +33,9 @@ public abstract class Elemento {
 		return pagine;
 	}
 
+	@Override
+	public String toString() {
+		return "[ISBN " + isbn + " " + "\"" + titolo + "\"" + ", " + anno + ", " + pagine + " pagine" + "]";
+	}
+
 }

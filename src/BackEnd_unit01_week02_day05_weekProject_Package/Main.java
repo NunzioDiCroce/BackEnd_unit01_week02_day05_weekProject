@@ -11,9 +11,6 @@ public class Main {
 	// - - - - - - - - - - - - - - - - - - - - ArrayList "archivio" definition
 	public static List<Elemento> archivio = new ArrayList<>();
 
-	// - - - - - - - - - - - - - - - - - - - - File "info.txt" definition
-	// public static File file = new File("info.txt");
-
 	// - - - - - - - - - - - - - - - - - - - - main method definition
 	public static void main(String[] args) {
 
@@ -131,14 +128,23 @@ public class Main {
 			for (Elemento _elemento : archivio) {
 				if (_elemento instanceof Libro) {
 					Libro libro = (Libro) _elemento;
-					salvaSuFile.write(libro.getIsbn() + "#" + libro.getTitolo() + "#" + libro.getAnno() + "#"
+					salvaSuFile.write("#" + libro.getIsbn() + "#" + libro.getTitolo() + "#" + libro.getAnno() + "#"
 							+ libro.getPagine() + "#" + libro.getAutore() + "#" + libro.getGenere());
+				} else if (_elemento instanceof Rivista) {
+					Rivista rivista = (Rivista) _elemento;
+					salvaSuFile.write("#" + rivista.getIsbn() + "#" + rivista.getTitolo() + "#" + rivista.getAnno()
+							+ "#" + rivista.getPagine() + "#" + rivista.getPeriodicita());
 				}
 			}
 		} catch (IOException _e) {
 			_e.printStackTrace();
 		}
-
-// leggiArchivioDaFile
 	}
+
+	/*
+	 * public static Elemento leggiArchivioDaFile() { // - - - - - - - - - - - - - -
+	 * - - - - - - File "info2.txt" definition File file2 = new File("info2.txt");
+	 * String readFileToString = FileUtils.readFileToString(file2, "UTF-8");
+	 * String[] split = }
+	 */
 }

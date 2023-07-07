@@ -32,6 +32,57 @@ public class Main {
 		Rivista rivista04 = new Rivista("014", "Titolo quarta rivista", 2015, 50, Periodicita.MENSILE);
 		Rivista rivista05 = new Rivista("015", "Titolo quinta rivista", 2020, 25, Periodicita.SETTIMANALE);
 
+		// - - - - - - - - - - - - - - - - - - - - console
+		System.out.println("");
+		System.out.println("CATALOGO BIBLIOGRAFICO");
+		System.out.println("- - - - - - - - - - - - - - - - - - - -");
+
+		System.out.println("");
+		System.out.println("Elenco degli elementi aggiunti:");
+		aggiungiElemento(libro01);
+		aggiungiElemento(libro02);
+		aggiungiElemento(libro03);
+		aggiungiElemento(libro04);
+		aggiungiElemento(libro05);
+		aggiungiElemento(rivista01);
+		aggiungiElemento(rivista02);
+		aggiungiElemento(rivista03);
+		aggiungiElemento(rivista04);
+		aggiungiElemento(rivista05);
+		for (Elemento _elemento : archivio) {
+			System.out.println(_elemento);
+		}
+		System.out.println("- - - - - - - - - - - - - - - - - - - -");
+
+		rimuoviElementoPerIsbn("001");
+		System.out.println("");
+		System.out.println("Elenco degli elementi dopo rimozione ISBN 001:");
+		for (Elemento _elemento : archivio) {
+			System.out.println(_elemento);
+		}
+		System.out.println("- - - - - - - - - - - - - - - - - - - -");
+
+		ricercaElementoPerIsbn("002");
+		System.out.println("");
+		System.out.println("Ricerca elemento con ISBN 002:");
+		System.out.println(ricercaElementoPerIsbn("002"));
+		System.out.println("- - - - - - - - - - - - - - - - - - - -");
+
+		List<Elemento> archivioPerAnno = ricercaElementoPerAnno(2020);
+		System.out.println("");
+		System.out.println("Ricerca elementi del 2020:");
+		for (Elemento _elemento : archivioPerAnno) {
+			System.out.println(_elemento);
+		}
+		System.out.println("- - - - - - - - - - - - - - - - - - - -");
+
+		List<Elemento> archivioPerAutore = ricercaElementoPerAutore("Paolo");
+		System.out.println("");
+		System.out.println("Ricerca elementi con autore Paolo:");
+		for (Elemento _elemento : archivioPerAutore) {
+			System.out.println(_elemento);
+		}
+		System.out.println("- - - - - - - - - - - - - - - - - - - -");
 	}
 
 	// - - - - - - - - - - - - - - - - - - - - methods definition

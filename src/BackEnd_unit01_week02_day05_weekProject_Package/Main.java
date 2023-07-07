@@ -56,7 +56,7 @@ public class Main {
 
 		rimuoviElementoPerIsbn("001");
 		System.out.println("");
-		System.out.println("Elenco degli elementi dopo rimozione ISBN 001:");
+		System.out.println("Elenco degli elementi dopo rimozione di ISBN 001:");
 		for (Elemento _elemento : archivio) {
 			System.out.println(_elemento);
 		}

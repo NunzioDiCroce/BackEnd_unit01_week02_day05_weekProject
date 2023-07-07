@@ -1,5 +1,7 @@
 package BackEnd_unit01_week02_day05_weekProject_Package;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,6 +10,9 @@ public class Main {
 
 	// - - - - - - - - - - - - - - - - - - - - ArrayList "archivio" definition
 	public static List<Elemento> archivio = new ArrayList<>();
+
+	// - - - - - - - - - - - - - - - - - - - - File "info.txt" definition
+	// public static File file = new File("info.txt");
 
 	// - - - - - - - - - - - - - - - - - - - - main method definition
 	public static void main(String[] args) {
@@ -83,6 +88,12 @@ public class Main {
 			System.out.println(_elemento);
 		}
 		System.out.println("- - - - - - - - - - - - - - - - - - - -");
+
+		System.out.println("");
+		System.out.println("Salvataggio su file degli elementi presenti in archivio");
+		salvaArchivioSuFile("info.txt");
+		System.out.println("Guardare info.txt per verificare il salvataggio");
+		System.out.println("- - - - - - - - - - - - - - - - - - - -");
 	}
 
 	// - - - - - - - - - - - - - - - - - - - - methods definition
@@ -103,12 +114,31 @@ public class Main {
 				.collect(Collectors.toCollection(ArrayList::new));
 	}
 
-	private static ArrayList<Elemento> ricercaElementoPerAutore(String _autore) {
+	public static ArrayList<Elemento> ricercaElementoPerAutore(String _autore) {
 		return archivio.stream()
 				.filter(_elemento -> _elemento instanceof Libro && ((Libro) _elemento).getAutore().equals(_autore))
 				.collect(Collectors.toCollection(ArrayList::new));
 	}
 
-	// salvaArchivioSuFile
-	// leggiArchivioDaFile
+	// public Libro(String _isbn, String _titolo, int _anno, int _pagine, String
+	// _autore, String _genere)
+
+	// public Rivista(String _isbn, String _titolo, int _anno, int _pagine,
+	// Periodicita _periodicita)
+
+	public static void salvaArchivioSuFile(String _nomeFile) {
+		try (FileWriter salvaSuFile = new FileWriter(_nomeFile)) {
+			for (Elemento _elemento : archivio) {
+				if (_elemento instanceof Libro) {
+					Libro libro = (Libro) _elemento;
+					salvaSuFile.write(libro.getIsbn() + "#" + libro.getTitolo() + "#" + libro.getAnno() + "#"
+							+ libro.getPagine() + "#" + libro.getAutore() + "#" + libro.getGenere());
+				}
+			}
+		} catch (IOException _e) {
+			_e.printStackTrace();
+		}
+
+// leggiArchivioDaFile
+	}
 }

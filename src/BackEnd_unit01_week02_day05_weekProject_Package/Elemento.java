@@ -5,15 +5,15 @@ public abstract class Elemento {
 	// - - - - - - - - - - - - - - - - - - - - attributes
 	protected String isbn;
 	protected String titolo;
-	protected int annoPubblicazione;
-	protected int numeroPagine;
+	protected int anno;
+	protected int pagine;
 
 	// - - - - - - - - - - - - - - - - - - - - constructors
-	public Elemento(String _isbn, String _titolo, int _annoPubblicazione, int _numeroPagine) {
+	public Elemento(String _isbn, String _titolo, int _anno, int _pagine) {
 		this.isbn = _isbn;
 		this.titolo = _titolo;
-		this.annoPubblicazione = _annoPubblicazione;
-		this.numeroPagine = _numeroPagine;
+		this.anno = _anno;
+		this.pagine = _pagine;
 	}
 
 	// - - - - - - - - - - - - - - - - - - - - getters & setters
@@ -25,12 +25,12 @@ public abstract class Elemento {
 		return titolo;
 	}
 
-	public int getAnnoPubblicazione() {
-		return annoPubblicazione;
+	public int getAnno() {
+		return anno;
 	}
 
-	public int getNumeroPagine() {
-		return numeroPagine;
+	public int getPagine() {
+		return pagine;
 	}
 
 }

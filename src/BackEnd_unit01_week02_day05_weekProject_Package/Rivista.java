@@ -6,13 +6,13 @@ public class Rivista extends Elemento {
 	protected Periodicita periodicita;
 
 	// - - - - - - - - - - - - - - - - - - - - constructors
-	public Rivista(String _isbn, String _titolo, int _annoPubblicazione, int _numeroPagine) {
-		super(_isbn, _titolo, _annoPubblicazione, _numeroPagine);
+	public Rivista(String _isbn, String _titolo, int _anno, int _pagine) {
+		super(_isbn, _titolo, _anno, _pagine);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Rivista(String _isbn, String _titolo, int _annoPubblicazione, int _numeroPagine, Periodicita _periodicita) {
-		super(_isbn, _titolo, _annoPubblicazione, _numeroPagine);
+	public Rivista(String _isbn, String _titolo, int _anno, int _pagine, Periodicita _periodicita) {
+		super(_isbn, _titolo, _anno, _pagine);
 		this.periodicita = _periodicita;
 	}
 
@@ -25,12 +25,12 @@ public class Rivista extends Elemento {
 		return titolo;
 	}
 
-	public int getAnnoPubblicazione() {
-		return annoPubblicazione;
+	public int getAnno() {
+		return anno;
 	}
 
-	public int getNumeroPagine() {
-		return numeroPagine;
+	public int getPagine() {
+		return pagine;
 	}
 
 	public Periodicita getPeriodicita() {

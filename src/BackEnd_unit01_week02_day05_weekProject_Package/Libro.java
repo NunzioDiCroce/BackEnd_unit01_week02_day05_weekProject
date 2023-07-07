@@ -7,14 +7,13 @@ public class Libro extends Elemento {
 	protected String genere;
 
 	// - - - - - - - - - - - - - - - - - - - - constructors
-	public Libro(String _isbn, String _titolo, int _annoPubblicazione, int _numeroPagine) {
-		super(_isbn, _titolo, _annoPubblicazione, _numeroPagine);
+	public Libro(String _isbn, String _titolo, int _anno, int _pagine) {
+		super(_isbn, _titolo, _anno, _pagine);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Libro(String _isbn, String _titolo, int _annoPubblicazione, int _numeroPagine, String _autore,
-			String _genere) {
-		super(_isbn, _titolo, _annoPubblicazione, _numeroPagine);
+	public Libro(String _isbn, String _titolo, int _anno, int _pagine, String _autore, String _genere) {
+		super(_isbn, _titolo, _anno, _pagine);
 		this.autore = _autore;
 		this.genere = _genere;
 	}
@@ -28,12 +27,12 @@ public class Libro extends Elemento {
 		return titolo;
 	}
 
-	public int getAnnoPubblicazione() {
-		return annoPubblicazione;
+	public int getAnno() {
+		return anno;
 	}
 
-	public int getNumeroPagine() {
-		return numeroPagine;
+	public int getPagine() {
+		return pagine;
 	}
 
 	public String getAutore() {

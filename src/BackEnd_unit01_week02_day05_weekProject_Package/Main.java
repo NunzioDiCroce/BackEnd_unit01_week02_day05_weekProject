@@ -29,4 +29,12 @@ public class Main {
 
 	}
 
+	// - - - - - - - - - - - - - - - - - - - - methods definition
+	// aggiungiElemento
+	// rimuoviElementoPerIsbn
+	// ricercaElementoPerIsbn
+	// ricercaElementoPerAnno
+	// ricercaElementoPerAutore
+	// salvaArchivioSuFile
+	// leggiArchivioDaFile
 }

@@ -8,7 +8,7 @@ public abstract class Elemento {
 	protected int annoPubblicazione;
 	protected int numeroPagine;
 
-	// - - - - - - - - - - - - - - - - - - - - constructor
+	// - - - - - - - - - - - - - - - - - - - - constructors
 	public Elemento(String _isbn, String _titolo, int _annoPubblicazione, int _numeroPagine) {
 		this.isbn = _isbn;
 		this.titolo = _titolo;

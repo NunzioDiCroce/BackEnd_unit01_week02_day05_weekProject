@@ -139,12 +139,12 @@ public class Main {
 			for (Elemento _elemento : archivio) {
 				if (_elemento instanceof Libro) {
 					Libro libro = (Libro) _elemento;
-					salvaSuFile.write("#LIBRO," + libro.getIsbn() + "," + libro.getTitolo() + "," + libro.getAnno()
-							+ "," + libro.getPagine() + "," + libro.getAutore() + "," + libro.getGenere());
+					salvaSuFile.write(libro.getIsbn() + "," + libro.getTitolo() + "," + libro.getAnno() + ","
+							+ libro.getPagine() + "," + libro.getAutore() + "," + libro.getGenere() + "\n");
 				} else if (_elemento instanceof Rivista) {
 					Rivista rivista = (Rivista) _elemento;
-					salvaSuFile.write("#RIVISTA," + rivista.getIsbn() + "," + rivista.getTitolo() + ","
-							+ rivista.getAnno() + "," + rivista.getPagine() + "," + rivista.getPeriodicita());
+					salvaSuFile.write(rivista.getIsbn() + "," + rivista.getTitolo() + "," + rivista.getAnno() + ","
+							+ rivista.getPagine() + "," + rivista.getPeriodicita() + "\n");
 				}
 			}
 		} catch (IOException _e) {

@@ -1,5 +1,7 @@
 package BackEnd_unit01_week02_day05_weekProject_Package;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -133,15 +135,15 @@ public class Main {
 	// Periodicita _periodicita)
 
 	public static void salvaArchivioSuFile(String _nomeFile) {
-		try (FileWriter salvaSuFile = new FileWriter(_nomeFile)) {
+		try (FileWriter scriviSuFile = new FileWriter(_nomeFile)) {
 			for (Elemento _elemento : archivio) {
 				if (_elemento instanceof Libro) {
 					Libro libro = (Libro) _elemento;
-					salvaSuFile.write(libro.getIsbn() + "," + libro.getTitolo() + "," + libro.getAnno() + ","
+					scriviSuFile.write(libro.getIsbn() + "," + libro.getTitolo() + "," + libro.getAnno() + ","
 							+ libro.getPagine() + "," + libro.getAutore() + "," + libro.getGenere() + "\n");
 				} else if (_elemento instanceof Rivista) {
 					Rivista rivista = (Rivista) _elemento;
-					salvaSuFile.write(rivista.getIsbn() + "," + rivista.getTitolo() + "," + rivista.getAnno() + ","
+					scriviSuFile.write(rivista.getIsbn() + "," + rivista.getTitolo() + "," + rivista.getAnno() + ","
 							+ rivista.getPagine() + "," + rivista.getPeriodicita() + "\n");
 				}
 			}
@@ -150,10 +152,42 @@ public class Main {
 		}
 	}
 
-	// public Libro(String _isbn, String _titolo, int _anno, int _pagine, String
-	// _autore, String _genere)
+	public static ArrayList<Elemento> creaArchivioDaFile(String _nomeFile) {
 
-	// public Rivista(String _isbn, String _titolo, int _anno, int _pagine,
-	// Periodicita _periodicita)
+		// - - - - - - - - - - - - - - - - - - - - ArrayList "archivioDue" definition
+		ArrayList<Elemento> archivioDue = new ArrayList<>();
 
+		try (BufferedReader leggiDaFile = new BufferedReader(new FileReader(_nomeFile))) {
+
+			String riga;
+
+			while ((riga = leggiDaFile.readLine()) != null) {
+
+				// public Elemento(String _isbn, String _titolo, int _anno, int _pagine)
+				String[] attributi = riga.split(",");
+				String isbn = attributi[0];
+				String titolo = attributi[1];
+				int anno = Integer.parseInt(attributi[2]);
+				int pagine = Integer.parseInt(attributi[3]);
+
+				if (attributi.length == 6) {
+					// public Libro(String _isbn, String _titolo, int _anno, int _pagine, String
+					// _autore, String _genere)
+					String autore = attributi[4];
+					String genere = attributi[5];
+
+				} else if (attributi.length == 5) {
+					// public Rivista(String _isbn, String _titolo, int _anno, int _pagine,
+					// Periodicita _periodicita)
+				}
+
+			}
+
+		} catch (IOException _e) {
+			_e.printStackTrace();
+		}
+
+		return archivioDue;
+
+	}
 }

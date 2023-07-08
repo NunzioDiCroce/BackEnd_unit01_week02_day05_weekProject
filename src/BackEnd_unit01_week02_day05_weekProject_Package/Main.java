@@ -1,5 +1,7 @@
 package BackEnd_unit01_week02_day05_weekProject_Package;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -91,6 +93,15 @@ public class Main {
 		salvaArchivioSuFile("info.txt");
 		System.out.println("Guardare info.txt per verificare il salvataggio");
 		System.out.println("- - - - - - - - - - - - - - - - - - - -");
+
+		List<Libro> archivioDue = leggiArchivioDaFile("info2.txt");
+		System.out.println("");
+		System.out.println("Creazione nuovo archivio con elementi presenti su file");
+		System.out.println("Elenco degli elementi inseriti nel nuovo archivio. Guardare info2.txt per verifica");
+		for (Elemento _elemento : archivioDue) {
+			System.out.println(_elemento);
+		}
+		System.out.println("- - - - - - - - - - - - - - - - - - - -");
 	}
 
 	// - - - - - - - - - - - - - - - - - - - - methods definition
@@ -128,12 +139,12 @@ public class Main {
 			for (Elemento _elemento : archivio) {
 				if (_elemento instanceof Libro) {
 					Libro libro = (Libro) _elemento;
-					salvaSuFile.write("#" + libro.getIsbn() + "#" + libro.getTitolo() + "#" + libro.getAnno() + "#"
-							+ libro.getPagine() + "#" + libro.getAutore() + "#" + libro.getGenere());
+					salvaSuFile.write("#LIBRO," + libro.getIsbn() + "," + libro.getTitolo() + "," + libro.getAnno()
+							+ "," + libro.getPagine() + "," + libro.getAutore() + "," + libro.getGenere());
 				} else if (_elemento instanceof Rivista) {
 					Rivista rivista = (Rivista) _elemento;
-					salvaSuFile.write("#" + rivista.getIsbn() + "#" + rivista.getTitolo() + "#" + rivista.getAnno()
-							+ "#" + rivista.getPagine() + "#" + rivista.getPeriodicita());
+					salvaSuFile.write("#RIVISTA," + rivista.getIsbn() + "," + rivista.getTitolo() + ","
+							+ rivista.getAnno() + "," + rivista.getPagine() + "," + rivista.getPeriodicita());
 				}
 			}
 		} catch (IOException _e) {
@@ -141,10 +152,53 @@ public class Main {
 		}
 	}
 
-	/*
-	 * public static Elemento leggiArchivioDaFile() { // - - - - - - - - - - - - - -
-	 * - - - - - - File "info2.txt" definition File file2 = new File("info2.txt");
-	 * String readFileToString = FileUtils.readFileToString(file2, "UTF-8"); }
-	 */
+	// public Libro(String _isbn, String _titolo, int _anno, int _pagine, String
+	// _autore, String _genere)
+
+	// public Rivista(String _isbn, String _titolo, int _anno, int _pagine,
+	// Periodicita _periodicita)
+
+	public static ArrayList<Libro> leggiArchivioDaFile(String _nomeFile) {
+
+		// - - - - - - - - - - - - - - - - - - - - ArrayList "archivioDue" definition
+		ArrayList<Libro> archivioDue = new ArrayList<>();
+
+		try (BufferedReader leggiDaFile = new BufferedReader(new FileReader(_nomeFile))) {
+
+			String stringa = leggiDaFile.readLine();
+
+			while (stringa != null) {
+
+				String[] attributi = stringa.split(",");
+				// String tipoElemento = attributi[0].substring(1);
+
+				// if (tipoElemento.equals("LIBRO")) {
+				String isbn = attributi[1];
+				String titolo = attributi[2];
+				int anno = Integer.parseInt(attributi[3]);
+				int pagine = Integer.parseInt(attributi[4]);
+				String autore = attributi[5];
+				String genere = attributi[6];
+
+				Libro libro = new Libro(isbn, titolo, anno, pagine, autore, genere);
+
+				archivioDue.add(libro);
+
+				/*
+				 * } else if (tipoElemento.equals("RIVISTA")) { String isbn = attributi[1];
+				 * String titolo = attributi[2]; int anno = Integer.parseInt(attributi[3]); int
+				 * pagine = Integer.parseInt(attributi[4]); // Periodicita periodicita =
+				 * (Periodicita) attributi[5];
+				 * 
+				 * Rivista rivista = new Rivista(isbn, titolo, anno, pagine);
+				 * 
+				 * archivioDue.add(rivista); }
+				 */
+			}
+		} catch (IOException _e) {
+			_e.printStackTrace();
+		}
+		return archivioDue;
+	}
 
 }

@@ -94,14 +94,14 @@ public class Main {
 		System.out.println("Guardare info.txt per verificare il salvataggio");
 		System.out.println("- - - - - - - - - - - - - - - - - - - -");
 
-//		List<Libro> archivioDue = leggiArchivioDaFile("info2.txt");
-//		System.out.println("");
-//		System.out.println("Creazione nuovo archivio con elementi presenti su file");
-//		System.out.println("Elenco degli elementi inseriti nel nuovo archivio. Guardare info2.txt per verifica");
-//		for (Elemento _elemento : archivioDue) {
-//			System.out.println(_elemento);
-//		}
-//		System.out.println("- - - - - - - - - - - - - - - - - - - -");
+		List<Elemento> archivioDue = creaArchivioDaFile("info2.txt");
+		System.out.println("");
+		System.out.println("Creazione nuovo archivio con elementi presenti su file");
+		System.out.println("Elenco degli elementi inseriti nel nuovo archivio. Guardare info2.txt per verifica");
+		for (Elemento _elemento : archivioDue) {
+			System.out.println(_elemento);
+		}
+		System.out.println("- - - - - - - - - - - - - - - - - - - -");
 	}
 
 	// - - - - - - - - - - - - - - - - - - - - methods definition
@@ -150,10 +150,13 @@ public class Main {
 					scriviSuFile.write(rivista.getIsbn() + "," + rivista.getTitolo() + "," + rivista.getAnno() + ","
 							+ rivista.getPagine() + "," + rivista.getPeriodicita() + "\n");
 				}
+
 			}
 		} catch (IOException _e) {
 			_e.printStackTrace();
+
 		}
+
 	}
 
 	public static ArrayList<Elemento> creaArchivioDaFile(String _nomeFile) {
@@ -191,6 +194,7 @@ public class Main {
 					// Rivista.periodicita periodicita = Rivista.periodicita.valueof(attributi[4]);
 
 					Rivista rivista = new Rivista(isbn, titolo, anno, pagine);
+					archivioDue.add(rivista);
 				}
 
 			}

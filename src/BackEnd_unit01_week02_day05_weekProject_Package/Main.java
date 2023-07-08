@@ -128,21 +128,25 @@ public class Main {
 				.collect(Collectors.toCollection(ArrayList::new));
 	}
 
-	// public Libro(String _isbn, String _titolo, int _anno, int _pagine, String
-	// _autore, String _genere)
-
-	// public Rivista(String _isbn, String _titolo, int _anno, int _pagine,
-	// Periodicita _periodicita)
-
 	public static void salvaArchivioSuFile(String _nomeFile) {
+
 		try (FileWriter scriviSuFile = new FileWriter(_nomeFile)) {
 			for (Elemento _elemento : archivio) {
 				if (_elemento instanceof Libro) {
+
 					Libro libro = (Libro) _elemento;
+
+					// public Libro(String _isbn, String _titolo, int _anno, int _pagine, String
+					// _autore, String _genere)
 					scriviSuFile.write(libro.getIsbn() + "," + libro.getTitolo() + "," + libro.getAnno() + ","
 							+ libro.getPagine() + "," + libro.getAutore() + "," + libro.getGenere() + "\n");
+
 				} else if (_elemento instanceof Rivista) {
+
 					Rivista rivista = (Rivista) _elemento;
+
+					// public Rivista(String _isbn, String _titolo, int _anno, int _pagine,
+					// Periodicita _periodicita)
 					scriviSuFile.write(rivista.getIsbn() + "," + rivista.getTitolo() + "," + rivista.getAnno() + ","
 							+ rivista.getPagine() + "," + rivista.getPeriodicita() + "\n");
 				}
@@ -176,9 +180,17 @@ public class Main {
 					String autore = attributi[4];
 					String genere = attributi[5];
 
+					Libro libro = new Libro(isbn, titolo, anno, pagine, autore, genere);
+					archivioDue.add(libro);
+
 				} else if (attributi.length == 5) {
 					// public Rivista(String _isbn, String _titolo, int _anno, int _pagine,
 					// Periodicita _periodicita)
+
+					// String periodicita = attributi[4];
+					// Rivista.periodicita periodicita = Rivista.periodicita.valueof(attributi[4]);
+
+					Rivista rivista = new Rivista(isbn, titolo, anno, pagine);
 				}
 
 			}
